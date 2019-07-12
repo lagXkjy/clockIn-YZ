@@ -59,7 +59,11 @@ Page({
               url: '../Successful/Successful',
             })
           } else {
-            $common.showModal('未知错误');
+            if (res.data.errType==2){
+              $common.showModal('您的积分不够哦');
+            }else{
+              $common.showModal('未知错误');
+            }
           }
         },
         (res) => {

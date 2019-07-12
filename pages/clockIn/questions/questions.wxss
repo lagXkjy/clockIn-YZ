@@ -95,6 +95,7 @@ page{
  padding: 30rpx;
  box-sizing: border-box;
  border-radius: 10rpx;
+ padding-right:35px;
 }
 .checked{
  color: #1A92EC;
