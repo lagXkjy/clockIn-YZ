@@ -1,5 +1,5 @@
-const myHttps = "cardtest.1-zhao.fun";//测试域名
-// const myHttps = "wxwj.1-zhao.cn";
+// const myHttps = "cardtest.1-zhao.fun";//测试域名
+const myHttps = "wxwj.1-zhao.cn";
 const host = `https://${myHttps}`;
 const phoneReg = /^(1[3456789]|9[28])\d{9}$/; // 正则手机号码
 const srcImg = `${host}/QualifImgs/`; //图片
@@ -158,6 +158,10 @@ const config = {
   PostReceivingGoods: `${host}/LittleProgram/InetgralCommodity/PostReceivingGoods`,
   // 获取积分商城Banner图
   GetIntegralBanners: `${host}/LittleProgram/InetgralCommodity/GetIntegralBanners`,
+  // 是否跳到绑定页面
+  GetIsBinding: `${host}/LittleProgram/UserInfo/GetIsBinding`,
+  // 绑定接口
+  UserBinding: `${host}/LittleProgram/UserInfo/UserBinding`,
 }
 
 

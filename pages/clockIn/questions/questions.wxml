@@ -2,7 +2,7 @@
 <view class='mask' wx:if='{{inmask}}'>
   <ExaminationTips tips='{{TpExplain}}' start='{{start}}' show='{{inExaminationTips}}' TpId='{{TpId}}'  bind:showTab="showTab" bind:inmask="inmask" info='{{info}}'></ExaminationTips>
 </view>
-<view>
+<view style="margin-bottom:100rpx;">
   <view class='number_top'>
     <view class='number'>
       <text>{{subscript+1}}</text>/{{info.TestInfo.SubjectSum}}

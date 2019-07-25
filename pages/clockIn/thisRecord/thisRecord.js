@@ -3,6 +3,7 @@ const app = getApp();
 Page({
   data: {
     listData: [],
+    GetMyAvaName: ''
   },
   deleteDiary(e) { //删除日记
     let index = e.currentTarget.dataset.index;
@@ -37,9 +38,39 @@ Page({
       }
     )
   },
+  GetMyAvaName() {//是否授权过
+    $common.request(
+      'POST',
+      $common.config.GetMyAvaName, {
+        OpenId: wx.getStorageSync('openid')
+      },
+      (res) => {
+        if (res.data.res) {
+          if (res.data.UserAvaUrl == '' && res.data.UserNickName == '') {
+            this.setData({
+              GetMyAvaName: false
+            })
+          } else {
+            this.setData({
+              GetMyAvaName: true
+            })
+          }
+        } else {
+          $common.showModal('未知错误');
+        }
+      },
+      (res) => {
+        $common.showModal('亲~网络不给力哦，请稍后重试');
+      },
+      (res) => {
+        $common.hide();
+      }
+    )
+  },
   onLoad: function (options) {
     this.data.once = true;
     this.data.JournalID = +options.JournalID;
+    this.GetMyAvaName()
   },
 
   /**

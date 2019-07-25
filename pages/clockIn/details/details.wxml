@@ -79,8 +79,7 @@
       </view>
       暂无打卡日记
     </view>
-    <diary-list is-administrator='{{isAdministrator}}' binddeleteDiary='deleteDiary' bindsyncComment='syncComment' bindsyncPraiseData='syncPraiseData' bindcheckImage='checkImage' wx:for='{{dirayList}}' data-index='{{index}}' obj='{{item}}' activity-id='{{ActivityID}}'
-      wx:key='Id' is-check='{{true}} ' GetMyAvaName='{{GetMyAvaName}}'></diary-list>
+    <diary-list is-administrator='{{isAdministrator}}' binddeleteDiary='deleteDiary' bindsyncComment='syncComment' bindsyncPraiseData='syncPraiseData' bindcheckImage='checkImage' wx:for='{{dirayList}}' data-index='{{index}}' obj='{{item}}' activity-id='{{ActivityID}}' wx:key='Id' is-check='{{true}} ' GetMyAvaName='{{GetMyAvaName}}'></diary-list>
   </view>
   <!-- 详情 -->
   <view hidden='{{tabIndex !== 1}}' class='details'>

@@ -49,6 +49,6 @@
     </view>
     暂无打卡日记
   </view>
-  <diary-list binddeleteDiary='deleteDiary' data-index='{{index}}' wx:for='{{listData}}' obj='{{item}}' wx:key='Id'></diary-list>
+  <diary-list binddeleteDiary='deleteDiary' GetMyAvaName='{{GetMyAvaName}}' data-index='{{index}}' wx:for='{{listData}}' obj='{{item}}' wx:key='Id'></diary-list>
 </block>
 <add-score score-type='{{scoreType}}' score-num='{{scoreNum}}'></add-score>

@@ -15,6 +15,7 @@ Page({
     isInit: true, //一开始默认显示去打卡，且不能点的按钮
     IsCompleted: false, //是否打过卡
     IsCanSmallCard: false, //是否可以打卡
+    GetMyAvaName: ''
   },
   longpress(e) { //复制文本
     let data = decodeURIComponent(this.data.themeInfo.infoArr[e.currentTarget.dataset.index].text);
@@ -178,8 +179,39 @@ Page({
       (Res) => { }
     )
   },
+
+  GetMyAvaName() {//是否授权过
+    $common.request(
+      'POST',
+      $common.config.GetMyAvaName, {
+        OpenId: wx.getStorageSync('openid')
+      },
+      (res) => {
+        if (res.data.res) {
+          if (res.data.UserAvaUrl == '' && res.data.UserNickName == '') {
+            this.setData({
+              GetMyAvaName: false
+            })
+          } else {
+            this.setData({
+              GetMyAvaName: true
+            })
+          }
+        } else {
+          $common.showModal('未知错误');
+        }
+      },
+      (res) => {
+        $common.showModal('亲~网络不给力哦，请稍后重试');
+      },
+      (res) => {
+        $common.hide();
+      }
+    )
+  },
   onLoad: function (options) {
     this.data.ThemeId = +options.ThemeId;
+    this.GetMyAvaName()
   },
 
   /**

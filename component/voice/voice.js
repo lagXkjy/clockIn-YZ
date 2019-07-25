@@ -20,14 +20,14 @@ Component({
           innerAudio.obeyMuteSwitch = false;
           // 由于只能在播放的时候才能获取到音频总长度，音频生成后先播放一次
           // 用计时器，在真机上获取不到
-          let once = true;
+          let once = false;
           innerAudio.onCanplay(() => { //监听音频达到可播放状态
             if (once) {
               innerAudio.volume = 0;
               innerAudio.offCanplay(); //音频加载成功后停止监听
-              // setTimeout(() => {
-              //   innerAudio.play();
-              // }, 100);
+              setTimeout(() => {
+                innerAudio.play();
+              }, 100);
             }
           });
           innerAudio.onPlay((res) => { //播放

@@ -1,5 +1,5 @@
 <!--pages/clockIn/Answer/Answer.wxml-->
-<view>
+<view style='margin-bottom:100rpx;'>
   <view class='number_top'>
     <view class='number'>
       <text>{{subscript+1}}</text>/{{listData.length}}

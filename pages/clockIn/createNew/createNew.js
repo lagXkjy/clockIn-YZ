@@ -7,13 +7,13 @@ Page({
     headImage: '',
     clockInType: 0,
     PatternType: 0,
-    Price: '',//收费价格
+    Price: '', //收费价格
     info: {
       text: [],
       images: [],
       audio: [],
       video: [],
-      file:[]
+      file: []
     },
     flag: true, //防止连点
   },
@@ -66,8 +66,8 @@ Page({
   syncData(e) { //同步组件数据
     this.data.info = e.detail;
   },
-  price(e){//收费价格
-    this.data.Price=e.detail.value
+  price(e) { //收费价格
+    this.data.Price = e.detail.value
   },
   toDetail() { //创建成功后跳转到详情页
     if (!this.data.flag) return;
@@ -75,9 +75,9 @@ Page({
     let ActivityName = this.data.activeName,
       ActivityHeadImage = this.data.headImage,
       ActivityType = this.data.clockInType + 1,
-    Price = +this.data.Price,
-    PatternType = this.data.PatternType;
-   
+      Price = +this.data.Price,
+      PatternType = this.data.PatternType;
+
 
     if (ActivityName.trim().length <= 0) {
       $common.showModal('请填写活动名称');
@@ -94,10 +94,10 @@ Page({
       this.data.flag = true;
       return;
     }
-    if (PatternType == 1&&!(/(^[1-9]\d*$)/.test(Price))) {
+    if (PatternType == 1 && !(/(^[1-9]\d*$)/.test(Price))) {
       $common.showModal('价格不可以为小数');
     }
-    
+
     let info = this.data.info;
     let infoFlag = false;
     for (let i = 0; i < 3; i++) {
@@ -111,6 +111,11 @@ Page({
       this.data.flag = true;
       return;
     }
+    for (let i in info.audio) {
+      if (info.audio[i] != '') {
+        info.audio[i] = `${info.audio[i]}|${info.showTime[i]}`
+      }
+    }
     $common.request(
       'POST',
       $common.config.InsertActivities, {
@@ -123,7 +128,7 @@ Page({
         ActivityInfoVideo: info.video,
         openId: wx.getStorageSync('openid'),
         ActivityPattern: PatternType,
-        ActivityPrice:Price,
+        ActivityPrice: Price,
 
       },
       (res) => {
@@ -149,8 +154,8 @@ Page({
     let ActivityName = this.data.activeName,
       ActivityHeadImage = this.data.headImage,
       ActivityType = this.data.clockInType + 1,
-    Price = this.data.Price,
-    PatternType = this.data.PatternType;
+      Price = this.data.Price,
+      PatternType = this.data.PatternType;
     if (ActivityName.trim().length <= 0) {
       $common.showModal('请填写活动名称');
       this.data.flag = true;
@@ -161,7 +166,7 @@ Page({
       this.data.flag = true;
       return;
     }
-    if (PatternType==1&&Price=='') {
+    if (PatternType == 1 && Price == '') {
       $common.showModal('请填写收费价格');
       this.data.flag = true;
       return;
@@ -255,7 +260,7 @@ Page({
       }
     )
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     if (options.ActivityID) { //修改
       this.data.ActivityID = +options.ActivityID;
       this.setData({
@@ -264,27 +269,27 @@ Page({
       this.getActivityData();
     }
   },
-  onReady: function () { },
+  onReady: function() {},
   isEnEvent() {
     let title = this.data.pageStatus ? '修改打卡活动' : '新建打卡活动';
     wx.setNavigationBarTitle({
       title
     });
   },
-  onShow: function () {
+  onShow: function() {
     this.isEnEvent();
   },
-  onHide: function () {
+  onHide: function() {
     this.stopPlay();
   },
-  onUnload: function () {
+  onUnload: function() {
     this.stopPlay();
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.stopPullDownRefresh();
   },
-  onReachBottom: function () { },
-  onShareAppMessage: function () {
+  onReachBottom: function() {},
+  onShareAppMessage: function() {
     return $common.share()
   }
 })

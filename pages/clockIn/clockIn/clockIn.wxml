@@ -7,7 +7,7 @@
     </block>
   </swiper>
 </view>
-<view wx:if='{{!isAuthority}}' bindtap='createClockIn' class='create'>+ 新建打卡活动</view>
+<view wx:if='{{isAuthority==1}}' bindtap='createClockIn' class='create'>+ 新建打卡活动</view>
 <view wx:else style='height:30rpx;'></view>
 <view bindtap='toDetails' data-index='{{index}}' class='list' wx:for='{{listData}}' wx:key='Id'>
   <view class='list-box'>

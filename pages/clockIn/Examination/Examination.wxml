@@ -1,5 +1,5 @@
 <!--pages/clockIn/Examination/Examination.wxml-->
-<view>
+<view wx:if='{{listData.length>=1}}'>
   <view class='conent' wx:for='{{listData}}' wx:key='{{index}}'>
     <view class='img'>
       <image mode='aspectFit' src='{{img+item.TpListChart}}'></image>
@@ -11,7 +11,7 @@
     </view>
   </view>
 </view>
-<!-- <view wx:if='{{listData.length<1}}' class='no_ranking'>
+<!-- <view wx:else class='no_ranking'>
   <view>
     <image src='/images/No_diary.png'></image>
   </view>
