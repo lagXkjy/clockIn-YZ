@@ -60,6 +60,7 @@
   padding: 30rpx;
   font-size: 30rpx;
   text-align: center;
+  margin-top: 150rpx;
 }
 .no_ranking view{
   display: flex;

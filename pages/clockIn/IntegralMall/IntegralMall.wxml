@@ -16,7 +16,7 @@
         <view class='exchange'>
           <image src='/images/exchange.png'></image>
         </view>
-        <view class='order-box'>
+        <view wx:if='{{listData.length>=1}}' class='order-box'>
           <view class='order' wx:for='{{listData}}' wx:key='{{index}}' data-IcId='{{item.IcId}}' bindtap='Integraldetails'>
             <view class='imgbox'>
               <image src='{{srcImg+item.IcMasterMap}}' mode='aspectFit'></image>
@@ -29,6 +29,12 @@
               </view>
             </view>
           </view>
+        </view>
+        <view wx:else class='no_ranking'>
+          <view>
+            <image src='/images/nocommodity.png'></image>
+          </view>
+          暂无商品
         </view>
       </view>
     </view>

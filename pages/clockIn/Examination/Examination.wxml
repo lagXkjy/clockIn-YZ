@@ -11,9 +11,9 @@
     </view>
   </view>
 </view>
-<!-- <view wx:else class='no_ranking'>
+<view wx:else class='no_ranking'>
   <view>
     <image src='/images/No_diary.png'></image>
   </view>
   暂无考试
-</view> -->
+</view>
