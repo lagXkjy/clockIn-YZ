@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/clockIn/judge/judge",
-    "pages/clockIn/phonenumber/phonenumber",
     "pages/login/login",
     "pages/clockIn/IntegralMall/IntegralMall",
     "pages/clockIn/logistics/logistics",

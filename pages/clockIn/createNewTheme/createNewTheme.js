@@ -168,9 +168,20 @@ Page({
       },
       (res) => {
         if (res.data.res) {
-          wx.navigateBack({
-            delta: 1
-          })
+          let that = this
+          if (+res.data.IsAudit == 0) {
+            wx.navigateBack({
+              delta: 1
+            })
+          } else {
+            $common.showModal('审核后自动发布', false, (res) => {
+              if (res.confirm) {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
+            }, "知道了")
+          }
         } else {
           if (res.data.errType === 4) {
             $common.showModal('打卡日期已存在');

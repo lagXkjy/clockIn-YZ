@@ -44,11 +44,23 @@ Page({
       },
       (res) => {
         if (res.data.res) {
-          this.setData({
-            scoreType: 2,
-            scoreNum: +res.data.Integral
-          });
-          app.CommentList = res.data.Data;
+          if (+res.data.IsAudit == 0) {
+            this.setData({
+              scoreType: 2,
+              scoreNum: +res.data.Integral
+            });
+            app.CommentList = res.data.Data;
+          } else {
+            $common.showModal('审核后自动发布', false, (data) => {
+              if (data.confirm) {
+                this.setData({
+                  scoreType: 2,
+                  scoreNum: +res.data.Integral
+                });
+                app.CommentList = res.data.Data;
+              }
+            }, "知道了")
+          }
         } else {
           if (res.data.errType === 4) {
             $common.showModal('你被限制发表评论');

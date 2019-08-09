@@ -132,10 +132,21 @@ Page({
 
       },
       (res) => {
+        console.log(PatternType)
         if (res.data.res) { //创建成功
-          wx.redirectTo({
-            url: `/pages/clockIn/details/details?ActivityID=${res.data.Id}&isAdministrator=1&isNewCreate=1`, //创建后默认是管理员
-          })
+          if (+res.data.IsAudit == 0) {
+            wx.redirectTo({
+              url: `/pages/clockIn/details/details?ActivityID=${res.data.Id}&isAdministrator=1&isNewCreate=1&ActivityPattern=${PatternType}`,
+            })
+          } else {
+            $common.showModal('审核后自动发布', false, (res) => {
+              if (res.confirm) {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
+            },"知道了")
+          }
         } else {
           $common.showModal('添加失败');
         }

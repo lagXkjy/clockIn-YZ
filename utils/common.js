@@ -1,4 +1,3 @@
-// const myHttps = "cardtest.1-zhao.fun";//测试域名
 const myHttps = "wxwj.1-zhao.cn";
 const host = `https://${myHttps}`;
 const phoneReg = /^(1[3456789]|9[28])\d{9}$/; // 正则手机号码

@@ -144,11 +144,24 @@ Page({
       },
       (res) => {
         if (res.data.res) {
-          app.clockInStatus = true;
-          this.setData({
-            scoreType: 4,
-            scoreNum: +res.data.Integral
-          })
+           let that=this
+          if (+res.data.IsAudit==0) {
+            app.clockInStatus = true;
+            that.setData({
+              scoreType: 4,
+              scoreNum: +res.data.Integral
+            })
+          }else{
+            $common.showModal('审核后自动发布', false, (data) => {
+              if (data.confirm) {
+                app.clockInStatus = true;
+                that.setData({
+                  scoreType: 4,
+                  scoreNum: +res.data.Integral
+                })
+              }
+            }, "知道了")
+          }
         } else {
           if (res.data.errType === 4) {
               $common.showModal('你被限制发表日记');

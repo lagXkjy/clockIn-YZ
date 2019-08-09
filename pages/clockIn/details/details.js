@@ -571,15 +571,15 @@ Page({
     let data = [];
     if (res.from === 'button') {
       url = `/pages/clockIn/thisRecord/thisRecord`
-      data = [{ key: 'JournalID', value: res.target.dataset.journalid }]
+      data = [{ key: 'JournalID', value: res.target.dataset.journalid }, { key: 'ActivityPattern', value: this.data.ActivityPattern }]
     } else {
       url = `/pages/clockIn/details/details`
-      data = [{ key: 'ActivityID', value: this.data.ActivityID }, { key: 'isAdministrator', value: this.data.isAdministrator }]
+      data = [{ key: 'ActivityID', value: this.data.ActivityID }, { key: 'isAdministrator', value: this.data.isAdministrator }, { key: 'ActivityPattern', value: this.data.ActivityPattern }]
     }
     if (share) {
       url = `/pages/clockIn/details/details`
-      data = [{ key: 'ActivityID', value: this.data.ActivityID }, { key: 'isAdministrator', value: this.data.isAdministrator }]
-    } 
+      data = [{ key: 'ActivityID', value: this.data.ActivityID }, { key: 'isAdministrator', value: this.data.isAdministrator }, { key: 'ActivityPattern', value: this.data.ActivityPattern }]
+    }
     // let path = res.from === 'button' ? `/pages/clockIn/thisRecord/thisRecord?JournalID=${res.target.dataset.journalid}` :
     //   `/pages/clockIn/details/details?ActivityID=${this.data.ActivityID}&isAdministrator=${this.data.isAdministrator}`;
     // if (share) path = `/pages/clockIn/details/details?ActivityID=${this.data.ActivityID}&isAdministrator=${this.data.isAdministrator}`;

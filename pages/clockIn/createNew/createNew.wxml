@@ -12,7 +12,7 @@
 </view>
 <!-- 打卡模式 -->
 <view wx:if='{{!pageStatus}}' class='box padding-b-30'>
-  <view class='title'>打卡类型</view>
+  <view class='title'>打卡模式</view>
   <view bindtap='PatternCheck' data-index='0' class='type'>
     <view class='radio'>
       <view class='{{PatternType === 0 && "radio-check"}}'></view>
